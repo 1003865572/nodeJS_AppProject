@@ -1,0 +1,9 @@
+
+
+!/app
+!/config
+!app.js
+!package.json
+
+
+/node_modules/
