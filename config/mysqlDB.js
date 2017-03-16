@@ -3,7 +3,7 @@ var mysql = require('mysql')
 var options = {
       host : '120.26.98.50',
       port : 3306 ,
-      database : 'test',
+      database : 'sxl_test',
       user: 'shiyalong',
       password : 'root'
     };

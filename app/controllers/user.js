@@ -11,6 +11,34 @@ exports.signup = function*(next){
   this.body = '成功'
 }
 
+exports.getDisk = function*(next){
+  let sql = `SELECT * FROM test`
+  let result = yield p.query(sql)
+  this.body = result
+}
+
+exports.insertDisk = function*(next) {
+  const { firstName, lastName } = this.request.body
+  let sql = `INSERT INTO test (firstName, lastName)  VALUES ('${firstName}', '${lastName}')`
+  let result = yield p.query(sql)
+  this.body = {
+    status: 200,
+    msg: 'success',
+    result
+  }
+}
+
+exports.deleteDisk = function*(next) {
+  const { id } = this.request.body
+  let sql = `delete from test where id=${id}`
+  let result = yield p.query(sql)
+  this.body = {
+    status: 200,
+    msg: 'success',
+    result
+  }
+}
+
 exports.insetUser = function*(next){
   // var name = reqJson.name;
   var reqJson = this.request.body;
