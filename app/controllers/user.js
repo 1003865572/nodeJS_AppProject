@@ -39,6 +39,17 @@ exports.deleteDisk = function*(next) {
   }
 }
 
+exports.getDisk = function*(next) {
+  const { id } = this.request.body
+  const sql = `select * from test where id = ${id}`
+  const result = yield p.query(sql)
+  this.body = {
+    status: 200,
+    msg: 'success',
+    result
+  }
+}
+
 exports.insetUser = function*(next){
   // var name = reqJson.name;
   var reqJson = this.request.body;

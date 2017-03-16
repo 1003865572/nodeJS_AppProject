@@ -12,6 +12,7 @@ module.exports = function(){
   router.get('/u/getDisk', user.getDisk)
   router.post('/u/insertDisk', user.insertDisk)
   router.post('/u/deleteDisk', user.deleteDisk)
+  router.post('/u/getDisk', user.getDisk)
   router.post('/u/verify',user.verify)
   router.post('/u/insetUser',user.insetUser)
   router.post('/u/deleteById',user.deleteById)
