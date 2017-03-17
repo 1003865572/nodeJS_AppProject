@@ -18,8 +18,18 @@ exports.getDisk = function*(next){
 }
 
 exports.insertDisk = function*(next) {
-  const { firstName, lastName } = this.request.body
-  let sql = `INSERT INTO test (firstName, lastName)  VALUES ('${firstName}', '${lastName}')`
+  const { firstName, lastName, id } = this.request.body
+  console.info(this.request.body)
+  let sql = ''
+  if (id) {
+    // 修改
+    console.info('修改')
+    sql = `update test set firstName='${firstName}', lastName='${lastName}' where id = ${id}`
+  } else {
+    // 添加
+    console.info('添加')
+    sql = `INSERT INTO test (firstName, lastName)  VALUES ('${firstName}', '${lastName}')`
+  }
   let result = yield p.query(sql)
   this.body = {
     status: 200,
@@ -39,7 +49,7 @@ exports.deleteDisk = function*(next) {
   }
 }
 
-exports.getDisk = function*(next) {
+exports.getEntity = function*(next) {
   const { id } = this.request.body
   const sql = `select * from test where id = ${id}`
   const result = yield p.query(sql)
